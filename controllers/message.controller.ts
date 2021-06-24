@@ -18,9 +18,7 @@ export const addMessage = async (req: Request, res: Response) => {
     const errors: string[] = errorsList.array().map((each) => each.msg);
 
     if (errors && errors.length) {
-      return res
-        .status(HTTPStatusCode.BadRequest)
-        .send({ statusCode: HTTPStatusCode.BadRequest, error: errors });
+      return res.status(HTTPStatusCode.BadRequest).send({ error: errors });
     }
 
     const message: MessageRequest = req.body;
@@ -37,7 +35,6 @@ export const addMessage = async (req: Request, res: Response) => {
     return res.status(HTTPStatusCode.Created).send(resultData);
   } catch (error) {
     return res.status(HTTPStatusCode.InternalServerError).send({
-      statusCode: HTTPStatusCode.InternalServerError,
       error: ResponseMessages.AddError,
     });
   }
@@ -49,9 +46,7 @@ export const getMessages = async (req: Request, res: Response) => {
     const errors: string[] = errorsList.array().map((each) => each.msg);
 
     if (errors && errors.length) {
-      return res
-        .status(HTTPStatusCode.BadRequest)
-        .send({ statusCode: HTTPStatusCode.BadRequest, error: errors });
+      return res.status(HTTPStatusCode.BadRequest).send({ error: errors });
     }
 
     const requestBody: GetMessageRequest = req.body;
@@ -103,9 +98,7 @@ export const getMessages = async (req: Request, res: Response) => {
       .limit(perPage)
       .data({ removeMeta: true });
 
-    return res.status(HTTPStatusCode.Success).json({
-      statusCode: HTTPStatusCode.Success,
-      message: ResponseMessages.GetSuccess,
+    return res.status(HTTPStatusCode.Success).send({
       result: resultData,
     });
   } catch (error) {
