@@ -1,0 +1,32 @@
+{
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "**/main.ts",
+    "routes/*.ts",
+    "enums/*.ts",
+    "validation/*.ts",
+    "**/*.d.ts",
+    "**/*.spec.ts",
+    "**/app.ts",
+    "**/handler.ts",
+    "**/router-*.ts",
+    "**/*-router.ts",
+    "**/*.model.ts"
+  ],
+  "extension": [
+    ".ts"
+  ],
+  "require": [
+    "ts-node/register"
+  ],
+  "reporter": [
+    "html",
+    "text",
+    "text-summary"
+  ],
+  "sourceMap": true,
+  "instrument": true,
+  "all": true
+}

@@ -34,11 +34,7 @@ export const addMessage = async (req: Request, res: Response) => {
     delete resultData?.$loki;
     delete resultData?.meta;
 
-    return res.json({
-      statusCode: HTTPStatusCode.Created,
-      message: ResponseMessages.AddSuccess,
-      data: resultData,
-    });
+    return res.status(HTTPStatusCode.Created).send(resultData);
   } catch (error) {
     return res.status(HTTPStatusCode.InternalServerError).send({
       statusCode: HTTPStatusCode.InternalServerError,
